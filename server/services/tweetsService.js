@@ -3,7 +3,8 @@ Meteor.methods({
 
       tweet.createdBy = this.userId;
       tweet.createdOn = new Date();
-
+      tweet.tweetData = sanitizeHtml(tweet.tweetData);
+      tweet.tweetData = tweet.tweetData.replace(/#([a-zA-Z0-9]+)/g,'<a href="/search/$1">#$1</a>');
       console.log(tweet);
 
         /*

@@ -71,6 +71,12 @@ body {
         border-top: 1px solid #dfdfdf;
         padding: 15px;
         margin-bottom: 15px;
+        position: relative;
+        .tweet-menu {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
         .author-image-container {
             float: left;
             margin-right: 15px;

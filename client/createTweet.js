@@ -9,6 +9,7 @@ Template.createTweet.events({
             tweet[formArray[i].name] = formArray[i].value;
         }
         Meteor.call('insertTweet', tweet);
+        event.target.reset();
     }
 });
 

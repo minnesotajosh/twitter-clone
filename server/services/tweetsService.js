@@ -12,5 +12,13 @@ Meteor.methods({
             * createdOn, other fields?
         */
       Tweets.insert(tweet);
+    },
+
+    deleteTweet(tweetId) {
+      let tweet = Tweets.findOne({ _id: tweetId});
+      if (tweet.createdBy === this.userId) {
+        Tweets.remove(tweetId);
+      }
     }
+
   });

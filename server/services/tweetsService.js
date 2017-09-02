@@ -15,7 +15,7 @@ Meteor.methods({
       }
 
       tweet.tags = tags.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
-      tweet.tweetData = tweet.tweetData.replace(/#([a-zA-Z0-9]+)/g,'<a href="/search/$1">#$1</a>');
+      tweet.tweetData = tweet.tweetData.replace(/#([a-zA-Z0-9]+)/g,'<a href="/search/?tags=$1">#$1</a>');
       console.log(tweet);
       
 

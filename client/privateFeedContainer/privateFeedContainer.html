@@ -1,0 +1,47 @@
+<template name="privateFeedContainer">
+    <ul class="feed">
+        {{#each tweets}}
+        <li>
+            <div class="tweet-container">
+                    <div class="tweet-menu">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                              {{#if canDelete}}<li><a data="delete-tweet">Remove Tweet</a></li>{{/if}}
+                            </ul>
+                          </div>                            
+                <div class="author-image-container">
+                    <img src="http://via.placeholder.com/60x60" alt="">
+
+                </div>
+                <div class="tweet-creator-data-container">
+                    <div class="author-name">Fred Flinstone</div>
+                    <div class="author-handle">@FredFlinstone</div>
+                    <div class="tweet-timestamp">37m</div>
+                </div>
+                <div class="tweet-content">
+                    <p>{{{tweetData}}}</p>
+
+                </div>
+                <div class="tweet-publish-data-container">
+                    <div class="replies-container">1</div>
+                    <div class="retweets-container">3</div>
+                    <div class="favorited-container">1</div>
+                    <div class="message-author-container"></div>
+                </div>
+            </div>
+        </li>
+        {{else}}
+        <li>
+                <div class="tweet-container">
+
+                    <div class="tweet-content">
+                        <p>Y'all need some friends.</p>
+
+                    </div>
+
+                </div>
+            </li>                    
+        {{/each}}
+    </ul>
+</template>

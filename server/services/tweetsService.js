@@ -31,7 +31,13 @@ Meteor.methods({
     deleteTweet(tweetId) {
       let tweet = Tweets.findOne({ _id: tweetId});
       if (tweet.createdBy === this.userId) {
+        //todo: remove count from tags too
+        // for (let tag of tweet.tags) {
+        //   Meteor.call('removeTweetIdFromTag', tag, tweetId);
+        // }
+
         Tweets.remove(tweetId);
+
       }
     }
 

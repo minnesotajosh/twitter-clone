@@ -1,7 +1,7 @@
 Router.configure({
-    layoutTemplate: 'ApplicationLayout'
+    layoutTemplate: 'layout'
 });
 
-// Router.route('/', ()=> {
-//     this.render('Home')
-// });
+Router.route('/', function () {
+    this.render('homeView');
+});

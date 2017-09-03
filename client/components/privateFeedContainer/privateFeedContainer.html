@@ -1,8 +1,8 @@
 <template name="privateFeedContainer">
-    <ul class="feed">
+    <ul class="feed unstyled-list">
         {{#each tweets}}
         <li>
-            <div class="tweet-container">
+            <div class="tweet-container card">
                     <div class="tweet-menu">
                             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
                             <span class="caret"></span></button>
@@ -33,7 +33,7 @@
         </li>
         {{else}}
         <li>
-                <div class="tweet-container">
+                <div class="tweet-container card">
 
                     <div class="tweet-content">
                         <p>Y'all need some friends.</p>

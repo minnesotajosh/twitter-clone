@@ -1,0 +1,24 @@
+.user-profile-container {
+    padding: 40px 0 15px;
+    margin-bottom: 20px;
+    background: #fff;
+
+    .user-image-container {
+        float: left;
+        width: 75px;
+        margin: 0 15px;
+        img {
+            width: 100%;
+            border-radius: 50%;
+        }
+    }
+    .user-name-container {
+        float: left;
+        padding-top: 15px;
+    }
+
+    .user-details-container {
+        clear: both;
+        padding: 15px;
+    }
+}

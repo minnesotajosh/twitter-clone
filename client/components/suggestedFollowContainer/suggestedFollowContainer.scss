@@ -1,0 +1,24 @@
+.suggested-follow-container {    
+    .follow {
+        border-top: 1px solid #e0e0e0;
+        padding-top: 15px;
+        margin-bottom: 15px;
+        overflow: hidden;
+
+        .account-image {
+            float: left;
+            margin-right: 15px;
+            img {
+                border-radius: 50%;
+                width: 45px;
+            }
+        }
+        .account-information-container {
+            float: left;
+        }
+        .follow-button {
+            clear: both;
+            float: right;
+        }
+    }
+}

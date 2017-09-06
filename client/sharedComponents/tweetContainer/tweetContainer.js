@@ -7,7 +7,8 @@ Template.tweetContainer.helpers({
         return Meteor.userId() === this.createdBy;
     },
     username: function() {
-        return Meteor.users.findOne(this.createdBy).username;
+        let foundUser = Meteor.users.findOne(this.createdBy);
+        return foundUser && foundUser.username;
     }
 });
 

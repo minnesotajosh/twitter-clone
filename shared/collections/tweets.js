@@ -1,6 +1,6 @@
 Tweets = new Mongo.Collection( 'tweets' );
 
-tweetSchema = new SimpleSchema({
+let tweetSchema = new SimpleSchema({
   createdBy: {
     type: String,
     label: "Created By"

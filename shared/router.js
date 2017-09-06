@@ -21,7 +21,6 @@ Router.route('/search/', function () {
 Router.route('/users/:userName', function() {
     this.render('userView', {
         data: function() {
-            // Meteor.subscribe('users');            
             return Meteor.users.findOne({username: this.params.userName});            
         }
     });

@@ -1,8 +1,8 @@
 <template name="userInformationContainer">
         <div class="user-information-container card">
-                <div class="user-name"><h3><a href="#">Fred Flinstone</a></h3></div>
-                <div class="user-handle"><a href="#">@FredFlinstone</a></div>
-                <div class="tagline">I am Fred.</div>
+                <div class="user-name"><h3><a href="/users/{{username}}">{{username}}</a></h3></div>
+                <div class="user-handle"><a href="/users/{{username}}">@{{username}}</a></div>
+                <div class="tagline">I am a user.</div>
                 <div class="website"><span class="glyphicon glyphicon-globe"></span> <a href="#">www.google.com</a></div>
                 <div class="joined"><span class="glyphicon glyphicon-calendar"></span> Joined 2011</div>
                 <div class="user-media"><span class="glyphicon glyphicon-picture"></span> Media</div>

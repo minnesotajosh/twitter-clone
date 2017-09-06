@@ -6,7 +6,7 @@ Template.tweetContainer.helpers({
     canDelete: function() {
         return Meteor.userId() === this.createdBy;
     },
-    authorName: function() {
+    username: function() {
         return Meteor.users.findOne(this.createdBy).username;
     }
 });

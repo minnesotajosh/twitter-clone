@@ -3,7 +3,7 @@ Template.userFeedContainer.onCreated( () => {
   });
 
 Template.userFeedContainer.helpers({
-    tweets: () => {
-        return Tweets.find({}, {sort: {createdOn: -1}});
+    tweets: function() {
+        return Tweets.find({createdBy: this._id}, {sort: {createdOn: -1}});
     }
 });

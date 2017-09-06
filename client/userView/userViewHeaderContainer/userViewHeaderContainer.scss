@@ -1,0 +1,24 @@
+.profile-image-container {
+        position: relative;
+        a {
+                position: absolute;
+                z-index: 1;
+        }
+    img {
+        width: 200px;
+        border: 5px solid #666;
+        border-radius: 50%;
+    }
+}
+
+.user-profile-stats-container {
+        display: flex;
+        align-items: flex-end;
+        height: 150px;
+}
+
+.user-edit-button {
+        display: flex;
+        align-items: flex-end;
+        height: 150px;
+}

@@ -1,0 +1,48 @@
+<template name="userViewHeaderContainer">
+    <div class="user-view-header card">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="profile-image-container">
+                        <a href="/users/{{user}}">
+                            <img src="http://via.placeholder.com/150x150" alt="">
+                        </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="user-profile-stats-container text-center">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">
+                            <div class="user-details-title">Tweets</div>
+                            <div class="user-details-count">2</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <div class="user-details-title">Followers</div>
+                            <div class="user-details-count">2</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <div class="user-details-title">Following</div>
+                            <div class="user-details-count">2</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <div class="user-details-title">Likes</div>
+                            <div class="user-details-count">2</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                    <div class="user-edit-button pull-right">
+                        <button class="btn">Edit Profile</button>
+                    </div>                    
+            </div>
+        </div>
+    </div>
+</template>

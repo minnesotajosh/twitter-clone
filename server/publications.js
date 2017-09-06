@@ -5,3 +5,7 @@ Meteor.publish( 'tweets', () => {
 Meteor.publish('tags', () => {
   return Tags.find();
 });
+
+Meteor.publish('users', () => {
+  return Meteor.users.find();
+});

@@ -1,30 +1,4 @@
-body {
-    background: #f0f0f0;
-}
-.nav {
-    form {
-        padding: 10px 0 0;
-        button {
-            margin: 0 0 0 15px;
-            border-radius: 5px;
-            border: none;
-        }
-    }
-}
-
-.card {
-    background: #fff;
-    padding: 15px;
-    margin-bottom: 15px;    
-}
-
-.unstyled-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;    
-}
-
-.feed { //shared, might break tweet-container into a template
+.feed {
     .tweet-container {
         border-top: 1px solid #dfdfdf;
         position: relative;

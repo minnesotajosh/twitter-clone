@@ -1,13 +1,16 @@
 <template name="userProfileContainer">
 <div class="user-profile-container">
     <div class="user-image-container">
-        <img src="http://via.placeholder.com/100x100" alt="">
+        <a href="/users/{{user}}">
+            <img src="http://via.placeholder.com/100x100" alt="">
+        </a>
     </div>
     <div class="user-name-container">
-        <div class="user-name">Fred</div>
-        <div class="user-handle">@FredFlinstone</div>
+        <a href="/users/{{user}}">
+            <div class="user-name">{{user}}</div>
+            <div class="user-handle">@{{user}}</div>
+        </a>
     </div>
-
     <div class="user-details-container">
         <div class="row text-center">
             <div class="col-xs-4">

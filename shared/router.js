@@ -3,7 +3,11 @@ Router.configure({
 });
 
 Router.route('/', function () {
-    this.render('homeView');
+    this.render('homeView', {
+        data: function() {
+            return  Meteor.users.findOne({ _id: Meteor.userId() });
+        }
+    });
 });
 
 Router.route('/search/', function () {
@@ -11,5 +15,14 @@ Router.route('/search/', function () {
       data: function () {
         return { queryParams: this.params.query };
       }
+    });
+});
+
+Router.route('/users/:userName', function() {
+    this.render('userView', {
+        data: function() {
+            // Meteor.subscribe('users');            
+            return Meteor.users.findOne({username: this.params.userName});            
+        }
     });
 });

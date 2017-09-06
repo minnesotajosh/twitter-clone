@@ -27,6 +27,10 @@ let userProfileSchema = new SimpleSchema({
     followedBy: {
         type: [String],
         defaultValue: []
+    },
+    tweetCount: {
+        type: Number,
+        defaultValue: 0
     }
 });
 

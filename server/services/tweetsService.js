@@ -14,7 +14,7 @@ Meteor.methods({
         }
       }
 
-      tweet.tags = tags.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+      tweet.tags = _.uniq(tags);
       tweet.tweetData = tweet.tweetData.replace(/#([a-zA-Z0-9]+)/g,'<a href="/search/?tags=$1">#$1</a>');
       console.log(tweet);
       
@@ -26,6 +26,10 @@ Meteor.methods({
         */
       let insertedTweet = Tweets.insert(tweet);
       Meteor.call('insertTags', insertedTweet);
+      Meteor.users.update(
+        { _id: Meteor.userId() },
+        { $inc: { 'profile.tweetCount': 1} }
+      );
     },
 
     deleteTweet: function(tweetId) {
@@ -37,7 +41,10 @@ Meteor.methods({
         // }
 
         Tweets.remove(tweetId);
-
+        Meteor.users.update(
+          { _id: Meteor.userId() },
+          { $inc: { 'profile.tweetCount': -1} }
+        );
       }
     }
 

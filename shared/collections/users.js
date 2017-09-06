@@ -19,23 +19,23 @@ let userProfileSchema = new SimpleSchema({
     bio: {
         type: String,
         optional: true
+    },
+    following: {
+        type: [String],
+        defaultValue: []
+    },
+    followedBy: {
+        type: [String],
+        defaultValue: []
     }
 });
 
 userSchema = new SimpleSchema({
     username: {
-        type: String,
-        // For accounts-password, either emails or username is required, but not both. It is OK to make this
-        // optional here because the accounts-password package does its own validation.
-        // Third-party login packages may not require either. Adjust this schema as necessary for your usage.
-        optional: true
+        type: String
     },
     emails: {
-        type: Array,
-        // For accounts-password, either emails or username is required, but not both. It is OK to make this
-        // optional here because the accounts-password package does its own validation.
-        // Third-party login packages may not require either. Adjust this schema as necessary for your usage.
-        optional: true
+        type: Array
     },
     "emails.$": {
         type: Object

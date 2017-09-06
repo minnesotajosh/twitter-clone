@@ -20,7 +20,7 @@
                         <li>
                             <a href="#">
                             <div class="user-details-title">Followers</div>
-                            <div class="user-details-count">2</div>
+                            <div class="user-details-count">{{followedByCount}}</div>
                             </a>
                         </li>
                         <li>
@@ -39,9 +39,17 @@
                 </div>
             </div>
             <div class="col-md-3">
-                    <div class="user-edit-button pull-right">
-                        <button class="btn">Edit Profile</button>
-                    </div>                    
+                <div class="user-edit-button pull-right">
+                    {{#if ownsProfile}}
+                        <button class="btn" data-edit-profile>Edit Profile</button>
+                    {{else}}
+                        {{#if followingUser}}
+                            <button class="btn" data="unfollow-user">Unfollow</button>
+                            {{else}}
+                            <button class="btn" data="follow-user">Follow</button>
+                        {{/if}}
+                    {{/if}}
+                </div>                    
             </div>
         </div>
     </div>

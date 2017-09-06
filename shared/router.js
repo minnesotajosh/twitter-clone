@@ -18,10 +18,10 @@ Router.route('/search/', function () {
     });
 });
 
-Router.route('/users/:userName', function() {
+Router.route('/users/:username', function() {
     this.render('userView', {
         data: function() {
-            return Meteor.users.findOne({username: this.params.userName});            
+            return Meteor.users.findOne({username: this.params.username});            
         }
     });
 });

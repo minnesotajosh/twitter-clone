@@ -1,5 +1,5 @@
 Meteor.methods({
-    insertTweet( tweet ) {
+    insertTweet: function(tweet) {
 
       let tags = [];
 
@@ -28,7 +28,7 @@ Meteor.methods({
       Meteor.call('insertTags', insertedTweet);
     },
 
-    deleteTweet(tweetId) {
+    deleteTweet: function(tweetId) {
       let tweet = Tweets.findOne({ _id: tweetId});
       if (tweet.createdBy === this.userId) {
         //todo: remove count from tags too

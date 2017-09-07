@@ -1,9 +1,5 @@
 let userProfileSchema = new SimpleSchema({
-    firstName: {
-        type: String,
-        optional: true
-    },
-    lastName: {
+    name: {
         type: String,
         optional: true
     },
@@ -39,7 +35,8 @@ userSchema = new SimpleSchema({
         type: String
     },
     emails: {
-        type: Array
+        type: Array,
+        optional: true
     },
     "emails.$": {
         type: Object

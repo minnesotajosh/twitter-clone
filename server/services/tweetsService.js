@@ -1,6 +1,5 @@
 Meteor.methods({
     insertTweet: function(tweet) {
-
       let tags = [];
 
       tweet.createdBy = this.userId;
@@ -23,7 +22,7 @@ Meteor.methods({
             * Check if currentUser is inserting tweets to their own account
             * Parse message for @handles, #tags
             * createdOn, other fields?
-        */
+        */        
       let insertedTweet = Tweets.insert(tweet);
       Meteor.call('insertTags', insertedTweet);
       Meteor.users.update(

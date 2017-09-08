@@ -21,6 +21,10 @@ Template.userViewHeaderContainer.helpers({
         let foundUser = Meteor.users.findOne(this._id);
         console.log(this);
         return foundUser && foundUser.profile.following.length || 0;
+    },
+    likesCount: function() {
+        let foundUser = Meteor.users.findOne(this._id);
+        return foundUser && foundUser.profile.likes.length || 0;        
     }
 });
 

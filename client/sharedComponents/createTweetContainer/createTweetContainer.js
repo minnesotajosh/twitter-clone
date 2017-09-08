@@ -12,7 +12,7 @@ Template.createTweetContainer.events({
         //since tweet-box is contenteditable div instead of form element:
         let tweetBox = $(event.target).find('[data="tweet-box"]');
         tweet.tweetData = tweetBox.html();
-        Meteor.call('insertTweet', tweet);
+        Meteor.call('tweets.insertTweet', tweet);
         event.target.reset();
         tweetBox.html('');
     }

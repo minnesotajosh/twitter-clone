@@ -9,11 +9,20 @@ Template.tweetContainer.helpers({
     username: function() {
         let foundUser = Meteor.users.findOne(this.createdBy);
         return foundUser && foundUser.username;
+    },
+    likes: function() {
+        return this.likes.length;
+    },
+    isLiked: function() {
+        return 'is-liked';
     }
 });
 
 Template.tweetContainer.events({
-    'click a[data="delete-tweet"]': function(event) {
-        Meteor.call('deleteTweet', this._id);
-    }    
+    'click [data="delete-tweet"]': function(event) {
+        Meteor.call('tweets.deleteTweet', this._id);
+    },
+    'click [data="like-tweet"]': function(event) {
+        Meteor.call('tweets.likeTweet', this._id);
+    }  
 });

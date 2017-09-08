@@ -17,6 +17,11 @@ let tweetSchema = new SimpleSchema({
   tags: {
     type: [String],
     optional: true
+  },
+  likes: {
+    type: [String],
+    defaultValue: [],
+    optional: true
   }
 });
 

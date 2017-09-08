@@ -27,6 +27,11 @@ let userProfileSchema = new SimpleSchema({
     tweetCount: {
         type: Number,
         defaultValue: 0
+    },
+    likes: {
+        type: [String],
+        optional: true,
+        defaultValue: []
     }
 });
 

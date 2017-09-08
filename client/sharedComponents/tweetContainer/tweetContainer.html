@@ -4,7 +4,9 @@
                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
                 <span class="caret"></span></button>
                 <ul class="dropdown-menu dropdown-menu-right">
-                  {{#if canDelete}}<li><a data="delete-tweet">Remove Tweet</a></li>{{/if}}
+                    {{#if canDelete}}
+                        <li><button class="btn btn-link" data="delete-tweet">Remove Tweet</button></li>
+                    {{/if}}
                 </ul>
               </div>                            
     <div class="author-image-container">
@@ -28,7 +30,9 @@
     <div class="tweet-publish-data-container">
         <div class="replies-container">1</div>
         <div class="retweets-container">3</div>
-        <div class="favorited-container">1</div>
+        <div class="favorited-container">
+            <button class="btn" data="like-tweet"><span class="glyphicon glyphicon-heart {{isLiked}}" alt="likes"></span>{{likes}}</button>
+        </div>
         <div class="message-author-container"></div>
     </div>
 </div>

@@ -20,7 +20,18 @@ let tweetSchema = new SimpleSchema({
   },
   likes: {
     type: [String],
-    defaultValue: [],
+    defaultValue: []
+  },
+  retweetedBy: {
+    type: String,
+    optional: true
+  },
+  retweets: {
+    type: [String],
+    defaultValue: []
+  },
+  originalTweetId: {
+    type: String,
     optional: true
   }
 });

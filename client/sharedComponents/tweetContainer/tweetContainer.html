@@ -1,5 +1,10 @@
 <template name="tweetContainer">
 <div class="tweet-container card">
+        {{#if retweetedBy}}
+            <div class="retweet-author">
+                <span class="glyphicon glyphicon-retweet" title="retweet"></span> by {{retweetedBy}}
+            </div>
+        {{/if}}
         <div class="tweet-menu">
                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
                 <span class="caret"></span></button>
@@ -27,13 +32,28 @@
         <p>{{{tweetData}}}</p>
 
     </div>
+    {{#if retweetedBy}}
     <div class="tweet-publish-data-container">
         <div class="replies-container">1</div>
-        <div class="retweets-container">3</div>
+        <div class="retweets-container">            
+            <button class="btn" data="retweet-tweet"><span class="glyphicon glyphicon-retweet" title="retweet"></span>{{retweetsCount}}</button>
+        </div>
         <div class="favorited-container">
-            <button class="btn" data="like-tweet"><span class="glyphicon glyphicon-heart {{isLiked}}" alt="likes"></span>{{likes}}</button>
+            <button class="btn" data="like-tweet"><span class="glyphicon glyphicon-heart {{isLiked}}" title="likes"></span>{{likesCount}}</button>
         </div>
         <div class="message-author-container"></div>
     </div>
+    {{else}}
+    <div class="tweet-publish-data-container">
+            <div class="replies-container">1</div>
+            <div class="retweets-container">            
+                <button class="btn" data="retweet-tweet"><span class="glyphicon glyphicon-retweet" title="retweet"></span>{{originalRetweetsCount}}</button>
+            </div>
+            <div class="favorited-container">
+                <button class="btn" data="like-tweet"><span class="glyphicon glyphicon-heart {{isLiked}}" title="likes"></span>{{originalLikesCount}}</button>
+            </div>
+            <div class="message-author-container"></div>
+        </div>
+    {{/if}}
 </div>
 </template>

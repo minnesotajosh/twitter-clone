@@ -1,20 +1,23 @@
 Meteor.methods({
-  'tweets.insertTweet': function (tweet) {
+  'tweets.insertTweet': function (tweet, isRetweet = false) {
     let tags = [];
 
     tweet.createdBy = Meteor.userId();
     tweet.createdOn = new Date();
-    tweet.tweetData = sanitizeHtml(tweet.tweetData);
-
-    let findTags = tweet.tweetData.split(' ');
-    for (let word of findTags) {
-      if (word.slice(0, 1) === '#') {
-        tags.push(word.substring(1));
+    if (!isRetweet) {
+      tweet.tweetData = sanitizeHtml(tweet.tweetData);
+  
+      let findTags = tweet.tweetData.split(' ');
+      for (let word of findTags) {
+        if (word.slice(0, 1) === '#') {
+          tags.push(word.substring(1));
+        }
       }
+  
+      tweet.tags = _.uniq(tags);
+      tweet.tweetData = tweet.tweetData.replace(/#([a-zA-Z0-9]+)/g, '<a href="/search/?tags=$1">#$1</a>');
+    
     }
-
-    tweet.tags = _.uniq(tags);
-    tweet.tweetData = tweet.tweetData.replace(/#([a-zA-Z0-9]+)/g, '<a href="/search/?tags=$1">#$1</a>');
     console.log(tweet);
 
 
@@ -29,6 +32,8 @@ Meteor.methods({
       { _id: Meteor.userId() },
       { $inc: { 'profile.tweetCount': 1 } }
     );
+
+    return insertedTweet;
   },
 
   'tweets.deleteTweet': function (tweetId) {
@@ -77,6 +82,41 @@ Meteor.methods({
     Meteor.users.update(
       { _id: Meteor.userId() },
       { $set: { 'profile.likes': user.profile.likes } }
+    );
+
+  },
+
+  'tweets.retweetTweet': function (tweetId) {
+
+    /*
+      create a tweet with header saying who is retweeting this and content of original tweet
+      update tweet schema to include retweeter, if any
+      original tweet schema updated with id of new tweet (for counting purposes)
+
+      more i'm sure
+
+
+      ///////////////////
+      if a retweet (or a quote):
+      link to original tweet including original tweet's likes, author, etc as content
+      OR
+      copy original tweet into new tweet with additional properties, query metadata on tweet display (including replies)
+    */
+
+    let originalTweet = Tweets.findOne(tweetId);
+
+    let newTweet = Meteor.call('tweets.insertTweet', {
+      createdBy: originalTweet.createdBy,
+      tweetData: originalTweet.tweetData,
+      tags: originalTweet.tags,
+      retweetedBy: Meteor.userId(),
+      originalTweetId: tweetId
+    }, true);
+
+    originalTweet.retweets.push(newTweet);
+    Tweets.update(
+      { _id: tweetId },
+      { $set: { retweets: originalTweet.retweets} }
     );
 
   }

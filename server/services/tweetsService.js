@@ -38,7 +38,7 @@ Meteor.methods({
 
   'tweets.deleteTweet': function (tweetId) {
     let tweet = Tweets.findOne({ _id: tweetId });
-    if (tweet.createdBy === Meteor.userId()) {
+    if (tweet.createdBy === Meteor.userId() || tweet.retweetedBy === Meteor.userId()) {
       //todo: remove count from tags too
       // for (let tag of tweet.tags) {
       //   Meteor.call('removeTweetIdFromTag', tag, tweetId);
@@ -88,36 +88,25 @@ Meteor.methods({
 
   'tweets.retweetTweet': function (tweetId) {
 
-    /*
-      create a tweet with header saying who is retweeting this and content of original tweet
-      update tweet schema to include retweeter, if any
-      original tweet schema updated with id of new tweet (for counting purposes)
-
-      more i'm sure
-
-
-      ///////////////////
-      if a retweet (or a quote):
-      link to original tweet including original tweet's likes, author, etc as content
-      OR
-      copy original tweet into new tweet with additional properties, query metadata on tweet display (including replies)
-    */
-
     let originalTweet = Tweets.findOne(tweetId);
+    let newTweet = originalTweet;
+    delete newTweet._id;
+    newTweet.retweetedBy = Meteor.userId();
+    newTweet.createdOn = Date.now();
+    newTweet.originalTweetId = tweetId;
 
-    let newTweet = Meteor.call('tweets.insertTweet', {
-      createdBy: originalTweet.createdBy,
-      tweetData: originalTweet.tweetData,
-      tags: originalTweet.tags,
-      retweetedBy: Meteor.userId(),
-      originalTweetId: tweetId
-    }, true);
+    let insertedTweet = Tweets.insert(newTweet);
+    
+    originalTweet.retweets.push(insertedTweet);
+    
+    Tweets.update( { _id: tweetId }, {
+      $set: { 'retweets': originalTweet.retweets }
+    });
 
-    originalTweet.retweets.push(newTweet);
-    Tweets.update(
-      { _id: tweetId },
-      { $set: { retweets: originalTweet.retweets} }
-    );
+    Meteor.users.update(
+      { _id: Meteor.userId() },
+      { $inc: { 'profile.tweetCount': 1 } }
+    );    
 
   }
 

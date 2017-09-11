@@ -36,10 +36,10 @@
     <div class="tweet-publish-data-container">
         <div class="replies-container">1</div>
         <div class="retweets-container">            
-            <button class="btn" data="retweet-tweet"><span class="glyphicon glyphicon-retweet" title="retweet"></span>{{retweetsCount}}</button>
+            <button class="btn" data="retweet-retweet"><span class="glyphicon glyphicon-retweet" title="retweet"></span>{{originalRetweetsCount}}</button>
         </div>
         <div class="favorited-container">
-            <button class="btn" data="like-tweet"><span class="glyphicon glyphicon-heart {{isLiked}}" title="likes"></span>{{likesCount}}</button>
+            <button class="btn" data="like-retweet"><span class="glyphicon glyphicon-heart {{isLiked}}" title="likes"></span>{{originalLikesCount}}</button>
         </div>
         <div class="message-author-container"></div>
     </div>
@@ -47,10 +47,10 @@
     <div class="tweet-publish-data-container">
             <div class="replies-container">1</div>
             <div class="retweets-container">            
-                <button class="btn" data="retweet-tweet"><span class="glyphicon glyphicon-retweet" title="retweet"></span>{{originalRetweetsCount}}</button>
+                <button class="btn" data="retweet-tweet"><span class="glyphicon glyphicon-retweet" title="retweet"></span>{{retweetsCount}}</button>
             </div>
             <div class="favorited-container">
-                <button class="btn" data="like-tweet"><span class="glyphicon glyphicon-heart {{isLiked}}" title="likes"></span>{{originalLikesCount}}</button>
+                <button class="btn" data="like-tweet"><span class="glyphicon glyphicon-heart {{isLiked}}" title="likes"></span>{{likesCount}}</button>
             </div>
             <div class="message-author-container"></div>
         </div>

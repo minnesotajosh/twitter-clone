@@ -5,7 +5,7 @@ Template.tweetContainer.onCreated( () => {
 
 Template.tweetContainer.helpers({
     canDelete: function() {
-        return Meteor.userId() === this.createdBy;
+        return Meteor.userId() === this.createdBy || Meteor.userId() === this.retweetedBy;
     },
     username: function() {
         let foundUser = Meteor.users.findOne(this.createdBy);
@@ -40,5 +40,11 @@ Template.tweetContainer.events({
     },
     'click [data="retweet-tweet"]': function(event) {
         Meteor.call('tweets.retweetTweet', this._id);
+    },
+    'click [data="like-retweet"]': function(event) {
+        Meteor.call('tweets.likeTweet', this.originalTweetId);
+    },
+    'click [data="retweet-retweet"]': function(event) {
+        Meteor.call('tweets.retweetTweet', this.originalTweetId);
     }
 });

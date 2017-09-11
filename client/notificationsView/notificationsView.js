@@ -14,6 +14,7 @@ Template.notificationsView.helpers({
     notificationType: function() {
         switch (this.type) {
             case 'like': return Template.notificationLike;
+            case 'follow': return Template.notificationFollow;
             default: return '';
         }
     },
@@ -34,6 +35,13 @@ Template.notificationLike.helpers({
         return tweet && user && user.username;
     },
     likedBy: function() {
+        let user = Meteor.users.findOne(this.sentBy);        
+        return user && user.username;
+    }
+});
+
+Template.notificationFollow.helpers({
+    followedBy: function() {
         let user = Meteor.users.findOne(this.sentBy);        
         return user && user.username;
     }

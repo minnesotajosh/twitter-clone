@@ -14,6 +14,8 @@ Meteor.methods({
             { _id: userId },
             { $set: { 'profile.followedBy': _.uniq(followedByList)}}
         );
+
+        Meteor.call('notifications.followedUser', userId);
     },
     unfollowUser: function(userId) {
         let followingList = Meteor.user().profile.following;

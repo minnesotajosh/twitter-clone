@@ -57,25 +57,20 @@
     </div>    
 </template>
 
-<!-- 
-    <div class="author-image-container">
-        <a href="/users/{{username}}">
-            <img src="http://via.placeholder.com/60x60" alt="">
-        </a>
-    </div>
-    <div class="tweet-creator-data-container">
-        <div class="author-name">
-            <a href="/users/{{username}}">{{username}}</a>
-        </div>
-        <div class="author-handle">
-                <a href="/users/{{username}}">@{{username}}</a>
-        </div>
-        <div class="tweet-timestamp">37m</div>
-    </div>
-    <div class="tweet-content">
-        <p>{{{tweetData}}}</p>
-    
-    </div>    
-    <p>this is a like template!</p>
-
- -->
+<template name="notificationFollow">
+        <div class="row">
+            <div class="col-xs-2">
+                <span class="glyphicon glyphicon-user pull-right"></span>
+            </div>
+            <div class="col-xs-10">
+                <div class="profiles">
+                    <ul class="list-inline">
+                        <li><a href="/users/{{followedBy}}"><img class="account-image" src="http://via.placeholder.com/60x60"></a></li>
+                    </ul>
+                </div>
+                <div class="update">
+                    <h5><a href="/users/{{followedBy}}">{{followedBy}}</a> is following you</h5>
+                </div>                
+            </div>
+        </div>    
+    </template>

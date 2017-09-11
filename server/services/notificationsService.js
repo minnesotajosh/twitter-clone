@@ -3,19 +3,30 @@ Meteor.methods({
         console.log('marking as read');
         Notifications.update({sentTo: Meteor.userId()}, {$set: {hasBeenRead: true}}, {multi: true});
     },
-    'notifications.likedTweet': function(tweetId, likerId) {
+    'notifications.followedUser': function(userId) {
+        let notification = {
+            createdOn: Date.now(),
+            content: '',
+            sentBy: Meteor.userId(),
+            sentTo: userId,
+            type: 'follow'
+        }
+
+        return insertedNotification = Notifications.insert(notification);
+        
+    },
+    'notifications.likedTweet': function(tweetId, userId) {
         let tweet = Tweets.findOne(tweetId);
 
         let notification = {
             createdOn: Date.now(),
             content: tweetId,
             sentTo: tweet.createdBy,
-            sentBy: likerId,
-            type: 'like',
-            hasBeenRead: false
+            sentBy: userId,
+            type: 'like'
         };
 
-        let insertedNotification = Notifications.insert(notification);
+        return insertedNotification = Notifications.insert(notification);
     },
     'notifications.unlikedTweet': function(tweet, liker) {
 

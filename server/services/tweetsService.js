@@ -1,6 +1,7 @@
 Meteor.methods({
   'tweets.insertTweet': function (tweet, isRetweet = false) {
     let tags = [];
+    let mentions = [];
 
     tweet.createdBy = Meteor.userId();
     tweet.createdOn = new Date();
@@ -11,12 +12,18 @@ Meteor.methods({
       for (let word of findTags) {
         if (word.slice(0, 1) === '#') {
           tags.push(word.substring(1));
+        } else if (word.slice(0, 1) === '@') {
+          mentions.push(Meteor.users.findOne(
+            {'username': word.substring(1)}
+          )._id);
         }
       }
-  
+
       tweet.tags = _.uniq(tags);
+      tweet.mentions = _.uniq(mentions);
       tweet.tweetData = tweet.tweetData.replace(/#([a-zA-Z0-9]+)/g, '<a href="/search/?tags=$1">#$1</a>');
-    
+      tweet.tweetData = tweet.tweetData.replace(/@([a-zA-Z0-9]+)/g, '<a href="/users/$1">@$1</a>');
+      
     }
     console.log(tweet);
 
@@ -32,6 +39,8 @@ Meteor.methods({
       { _id: Meteor.userId() },
       { $inc: { 'profile.tweetCount': 1 } }
     );
+
+    
 
     return insertedTweet;
   },
@@ -69,10 +78,12 @@ Meteor.methods({
       //user is unliking this
       tweet.likes = _.without(tweet.likes, Meteor.userId());
       user.profile.likes = _.without(user.profile.likes, tweetId);
+      Meteor.call('notifications.unlikedTweet', tweetId, Meteor.userId());      
     } else {
       //user is liking this
       tweet.likes.push(Meteor.userId());
       user.profile.likes.push(tweetId);
+      Meteor.call('notifications.likedTweet', tweetId, Meteor.userId());      
     }
 
     Tweets.update(

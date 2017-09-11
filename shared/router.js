@@ -25,3 +25,24 @@ Router.route('/users/:username', function() {
         }
     });
 });
+
+Router.route('/users/:username/notifications', {
+    name: 'notificationsView',
+    template: 'notificationsView',
+    data: function(){
+        return Meteor.users.findOne({username: this.params.username});                    
+    },
+    waitOn: function () {
+        return Meteor.subscribe('users');
+    },    
+    onBeforeAction: function(){
+        let user = Meteor.users.findOne({username: this.params.username});            
+        let currentUser = Meteor.userId();
+        if(currentUser && currentUser === user._id){
+            this.next();
+        } else {
+            this.redirect('/');
+            this.next();
+        }
+    }
+});

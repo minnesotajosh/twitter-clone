@@ -15,3 +15,9 @@ Meteor.publish('users', () => {
 
   return this.ready();
 });
+
+Meteor.publish('notifications', () => {
+  return Notifications.find();
+
+  return this.ready();
+});

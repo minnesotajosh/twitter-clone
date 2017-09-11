@@ -4,7 +4,7 @@
             {{#if currentUser}}
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
-                <li><a href="#">Notifications</a></li>
+                <li><a href="/users/{{currentUser.username}}/notifications">Notifications</a></li>
                 <li><a href="#">Messages</a></li>
             </ul>
             {{/if}}

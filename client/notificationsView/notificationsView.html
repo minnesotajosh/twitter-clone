@@ -1,0 +1,38 @@
+<template name="notificationsView">
+    <h1>Notifications View</h1>
+    {{#each notifications}}
+        {{> notificationType}}
+    {{else}}
+    <p>No notifications</p>
+    {{/each}}
+</template>
+
+<template name="notificationLike">
+    <p>this is a like template!</p>
+</template>
+
+<!-- 
+
+Your template helper, returning the dynamic template:
+
+Template.nextMeetup.helpers({
+    rsvpButtonTemplate: function(rsvp) {
+        switch(rsvp){
+            case 'yes':   return Template.buttonYes;
+            case 'maybe': return Template.buttonMaybe;
+            case 'no':    return Template.buttonNo;
+            case 'none':  return Template.buttonNone;
+        }
+    }
+});
+Your main template, calling the template helper:
+
+<template name="myPage">
+    ...
+    {{> rsvpButtonTemplate}}
+    ...
+</template>
+
+
+
+ -->

@@ -33,6 +33,10 @@ let tweetSchema = new SimpleSchema({
   originalTweetId: {
     type: String,
     optional: true
+  },
+  mentions: {
+    type: [String],
+    defaultValue: []
   }
 });
 

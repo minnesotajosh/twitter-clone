@@ -1,21 +1,19 @@
 <template name="searchView">
-    <div class="container site-content">
-        <div class="row">
-            <div class="col-md-3 user-content">
-                {{> currentlyTrendingContainer}}    
-            </div>
-    
-            <div class="col-md-6 feed">
-                {{> searchContainer}}
-                {{> searchFeedContainer}}
-            </div>
-        
-            <div class="col-md-3 suggested-content">
-                {{> suggestedFollowContainer}}
-                {{> adSpaceContainer}}
-                {{> supportContainer}}
-            </div>
-
+    <div class="row">
+        <div class="col-md-3 user-content">
+            {{> currentlyTrendingContainer}}    
         </div>
+
+        <div class="col-md-6 feed">
+            {{> searchContainer}}
+            {{> searchFeedContainer}}
+        </div>
+    
+        <div class="col-md-3 suggested-content">
+            {{> suggestedFollowContainer}}
+            {{> adSpaceContainer}}
+            {{> supportContainer}}
+        </div>
+
     </div>
 </template>

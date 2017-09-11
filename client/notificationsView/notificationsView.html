@@ -1,38 +1,81 @@
 <template name="notificationsView">
-    <h1>Notifications View</h1>
-    {{#each notifications}}
-        {{> notificationType}}
-    {{else}}
-    <p>No notifications</p>
-    {{/each}}
+    <div class="row">
+    <div class="col-sm-3">
+        {{> currentlyTrendingContainer}}                
+    </div>
+    <div class="col-sm-6">
+        <div class="notifications-container card">
+            <h4>Notifications</h4>
+            <ul class="unstyled-list">
+            {{#each notifications}}
+            <li class="notification-container {{unread}}">
+                <div class="">
+                {{> notificationType}}
+                </div>
+            </li>
+            {{else}}
+            <li>
+                <p>No notifications</p>
+            </li>
+            {{/each}}
+        </ul>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        {{> suggestedFollowContainer}}
+        {{> adSpaceContainer}}
+        {{> supportContainer}}        
+    </div>
+</div>
 </template>
 
 <template name="notificationLike">
-    <p>this is a like template!</p>
+    <div class="row">
+        <div class="col-xs-2">
+            <span class="glyphicon glyphicon-heart pull-right"></span>
+        </div>
+        <div class="col-xs-10">
+            <div class="profiles">
+                <ul class="list-inline">
+                    <li><a href="/users/{{likedBy}}"><img class="account-image" src="http://via.placeholder.com/60x60"></a></li>
+                </ul>
+            </div>
+            <div class="update">
+                <h5><a href="/users/{{likedBy}}">{{likedBy}}</a> liked your tweet</h5>
+            </div>
+            <div class="tweet-summary-container">
+                    <a href="#" class="summary-link">
+                <div class="tweet-summary">
+                    <div class="author-information">
+                        <a href="{{authorUsername}}">{{authorUsername}} @{{authorUsername}}</a>
+                    </div>
+                    {{{tweetSummary}}}
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>    
 </template>
 
 <!-- 
-
-Your template helper, returning the dynamic template:
-
-Template.nextMeetup.helpers({
-    rsvpButtonTemplate: function(rsvp) {
-        switch(rsvp){
-            case 'yes':   return Template.buttonYes;
-            case 'maybe': return Template.buttonMaybe;
-            case 'no':    return Template.buttonNo;
-            case 'none':  return Template.buttonNone;
-        }
-    }
-});
-Your main template, calling the template helper:
-
-<template name="myPage">
-    ...
-    {{> rsvpButtonTemplate}}
-    ...
-</template>
-
-
+    <div class="author-image-container">
+        <a href="/users/{{username}}">
+            <img src="http://via.placeholder.com/60x60" alt="">
+        </a>
+    </div>
+    <div class="tweet-creator-data-container">
+        <div class="author-name">
+            <a href="/users/{{username}}">{{username}}</a>
+        </div>
+        <div class="author-handle">
+                <a href="/users/{{username}}">@{{username}}</a>
+        </div>
+        <div class="tweet-timestamp">37m</div>
+    </div>
+    <div class="tweet-content">
+        <p>{{{tweetData}}}</p>
+    
+    </div>    
+    <p>this is a like template!</p>
 
  -->

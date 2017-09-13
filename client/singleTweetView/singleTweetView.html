@@ -1,0 +1,22 @@
+<template name="singleTweetView">
+    {{#if Template.subscriptionsReady}}
+            <div class="row">
+                <div class="col-md-3">
+                    {{> userProfileContainer tweetAuthor}}
+                    {{> currentlyTrendingContainer}}
+                </div>
+
+                <div class="col-md-6 feed">
+                        {{> tweetContainer singleTweet}}
+                    </div>
+
+                    <div class="col-md-3">
+                        {{> suggestedFollowContainer}}
+                        {{> adSpaceContainer}}
+                        {{> supportContainer}}
+                    </div>
+
+                </div>
+
+    {{/if}}
+</template>

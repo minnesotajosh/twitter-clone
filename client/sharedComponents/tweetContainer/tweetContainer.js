@@ -1,6 +1,6 @@
 Template.tweetContainer.onCreated( () => {
-    Template.instance().subscribe( 'users' );  
-    Template.instance().subscribe( 'tweets' );  
+    Template.instance().subscribe( 'users' );
+    Template.instance().subscribe( 'tweets' );
   });
 
 Template.tweetContainer.helpers({
@@ -10,6 +10,19 @@ Template.tweetContainer.helpers({
     username: function() {
         let foundUser = Meteor.users.findOne(this.createdBy);
         return foundUser && foundUser.username;
+    },
+    originalAuthor: function() {
+        let originalAuthor = '';
+        if (this.originalTweetId) {
+             originalAuthor = Meteor.users.findOne(Tweets.findOne(this.originalTweetId).createdBy);
+        } else {
+             originalAuthor = Meteor.users.findOne(this.createdBy).username;
+        }
+        return Meteor.users && originalAuthor;
+    },
+    originalTweetId: function() {
+        let originalTweet = this.originalTweetId ? this.originalTweetId : this._id ;
+        return Tweets && originalTweet;
     },
     likesCount: function() {
         return this.likes.length;
@@ -24,11 +37,11 @@ Template.tweetContainer.helpers({
         return Meteor.users.findOne(this.retweetedBy) && Meteor.users.findOne(this.retweetedBy).username;
     },
     originalRetweetsCount: function() {
-        return Tweets.findOne(this.originalTweetId) && Tweets.findOne(this.originalTweetId).retweets.length;        
+        return Tweets.findOne(this.originalTweetId) && Tweets.findOne(this.originalTweetId).retweets.length;
     },
     originalLikesCount: function() {
-        return Tweets.findOne(this.originalTweetId) && Tweets.findOne(this.originalTweetId).likes.length;        
-    },
+        return Tweets.findOne(this.originalTweetId) && Tweets.findOne(this.originalTweetId).likes.length;
+    }
 });
 
 Template.tweetContainer.events({

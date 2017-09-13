@@ -1,5 +1,5 @@
 <template name="tweetContainer">
-<div class="tweet-container card">
+        <div data="{{linkToTweet}}" class="tweet-container card {{clickable}}">
         {{#if retweetedBy}}
             <div class="retweet-author">
                 <span class="glyphicon glyphicon-retweet" title="retweet"></span> by {{retweetedBy}}
@@ -13,7 +13,7 @@
                         <li><button class="btn btn-link" data="delete-tweet">Remove Tweet</button></li>
                     {{/if}}
                 </ul>
-              </div>                            
+              </div>
     <div class="author-image-container">
         <a href="/users/{{username}}">
             <img src="http://via.placeholder.com/60x60" alt="">
@@ -35,7 +35,7 @@
     {{#if retweetedBy}}
     <div class="tweet-publish-data-container">
         <!-- <div class="replies-container">1</div> -->
-        <div class="retweets-container">            
+        <div class="retweets-container">
             <button class="btn" data="retweet-retweet"><span class="glyphicon glyphicon-retweet" title="retweet"></span>{{originalRetweetsCount}}</button>
         </div>
         <div class="favorited-container">
@@ -46,7 +46,7 @@
     {{else}}
     <div class="tweet-publish-data-container">
             <!-- <div class="replies-container">1</div> -->
-            <div class="retweets-container">            
+            <div class="retweets-container">
                 <button class="btn" data="retweet-tweet"><span class="glyphicon glyphicon-retweet" title="retweet"></span>{{retweetsCount}}</button>
             </div>
             <div class="favorited-container">
@@ -56,4 +56,5 @@
         </div>
     {{/if}}
 </div>
+
 </template>

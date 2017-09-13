@@ -19,11 +19,14 @@ body {
 .card {
     background: #fff;
     padding: 15px;
-    margin-bottom: 15px;    
+    margin-bottom: 15px;
 }
 
-.unstyled-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;    
+.link-unstyled {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover, &:active, &:focus {
+        text-decoration: none;
+    }
 }

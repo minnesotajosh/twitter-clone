@@ -26,6 +26,14 @@ Router.route('/users/:username', function() {
     });
 });
 
+Router.route('/users/:username/status/:tweetId', function() {
+    this.render('singleTweetView', {
+        data: function() {
+            return Tweets.findOne(this.params.tweetId);            
+        }
+    });
+});
+
 Router.route('/notifications', {
     name: 'notificationsView',
     template: 'notificationsView',

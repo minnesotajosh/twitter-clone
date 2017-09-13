@@ -1,4 +1,3 @@
-.feed {
     .tweet-container {
         border-top: 1px solid #dfdfdf;
         position: relative;
@@ -37,4 +36,6 @@
             }
         }
     }
-}
+    .clickable {
+        cursor: pointer;
+    }

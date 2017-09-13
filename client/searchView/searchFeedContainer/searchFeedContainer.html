@@ -1,5 +1,5 @@
 <template name="searchFeedContainer">
-        <ul class="feed unstyled-list">
+        <ul class="feed list-unstyled">
             {{#each foundTweets}}
             <li>
                 {{> tweetContainer}}
@@ -7,14 +7,14 @@
             {{else}}
             <li>
                     <div class="tweet-container card">
-    
+
                         <div class="tweet-content">
                             <p>Y'all need some friends.</p>
-    
+
                         </div>
-    
+
                     </div>
-                </li>                    
+                </li>
             {{/each}}
         </ul>
     </template>

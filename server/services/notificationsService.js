@@ -13,7 +13,7 @@ Meteor.methods({
         }
 
         return insertedNotification = Notifications.insert(notification);
-        
+
     },
     'notifications.likedTweet': function(tweetId, userId) {
         let tweet = Tweets.findOne(tweetId);
@@ -28,7 +28,21 @@ Meteor.methods({
 
         return insertedNotification = Notifications.insert(notification);
     },
+    'notifications.retweetedTweet': function(tweetId, userId) {
+        let tweet = Tweets.findOne(tweetId);
+
+        let notification = {
+            createdOn: Date.now(),
+            content: tweetId,
+            sentTo: tweet.createdBy,
+            sentBy: userId,
+            type: 'retweet'
+        };
+
+        let insertedNotification = Notifications.insert(notification);
+        return insertedNotification;
+    },
     'notifications.unlikedTweet': function(tweet, liker) {
 
-    }    
+    }
   });

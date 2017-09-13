@@ -7,7 +7,7 @@ Meteor.methods({
     tweet.createdOn = new Date();
     if (!isRetweet) {
       tweet.tweetData = sanitizeHtml(tweet.tweetData);
-  
+
       let findTags = tweet.tweetData.split(' ');
       for (let word of findTags) {
         if (word.slice(0, 1) === '#') {
@@ -23,7 +23,7 @@ Meteor.methods({
       tweet.mentions = _.uniq(mentions);
       tweet.tweetData = tweet.tweetData.replace(/#([a-zA-Z0-9]+)/g, '<a href="/search/?tags=$1">#$1</a>');
       tweet.tweetData = tweet.tweetData.replace(/@([a-zA-Z0-9]+)/g, '<a href="/users/$1">@$1</a>');
-      
+
     }
     console.log(tweet);
 
@@ -40,7 +40,7 @@ Meteor.methods({
       { $inc: { 'profile.tweetCount': 1 } }
     );
 
-    
+
 
     return insertedTweet;
   },
@@ -78,12 +78,12 @@ Meteor.methods({
       //user is unliking this
       tweet.likes = _.without(tweet.likes, Meteor.userId());
       user.profile.likes = _.without(user.profile.likes, tweetId);
-      Meteor.call('notifications.unlikedTweet', tweetId, Meteor.userId());      
+      Meteor.call('notifications.unlikedTweet', tweetId, Meteor.userId());
     } else {
       //user is liking this
       tweet.likes.push(Meteor.userId());
       user.profile.likes.push(tweetId);
-      Meteor.call('notifications.likedTweet', tweetId, Meteor.userId());      
+      Meteor.call('notifications.likedTweet', tweetId, Meteor.userId());
     }
 
     Tweets.update(
@@ -107,9 +107,9 @@ Meteor.methods({
     newTweet.originalTweetId = tweetId;
 
     let insertedTweet = Tweets.insert(newTweet);
-    
+
     originalTweet.retweets.push(insertedTweet);
-    
+
     Tweets.update( { _id: tweetId }, {
       $set: { 'retweets': originalTweet.retweets }
     });
@@ -117,7 +117,9 @@ Meteor.methods({
     Meteor.users.update(
       { _id: Meteor.userId() },
       { $inc: { 'profile.tweetCount': 1 } }
-    );    
+    );
+
+    Meteor.call('notifications.retweetedTweet', tweetId, Meteor.userId());
 
   }
 

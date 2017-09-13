@@ -46,18 +46,23 @@ Template.tweetContainer.helpers({
 
 Template.tweetContainer.events({
     'click [data="delete-tweet"]': function(event) {
+        event.preventDefault();
         Meteor.call('tweets.deleteTweet', this._id);
     },
     'click [data="like-tweet"]': function(event) {
+        event.preventDefault();
         Meteor.call('tweets.likeTweet', this._id);
     },
     'click [data="retweet-tweet"]': function(event) {
+        event.preventDefault();
         Meteor.call('tweets.retweetTweet', this._id);
     },
     'click [data="like-retweet"]': function(event) {
+        event.preventDefault();
         Meteor.call('tweets.likeTweet', this.originalTweetId);
     },
     'click [data="retweet-retweet"]': function(event) {
+        event.preventDefault();
         Meteor.call('tweets.retweetTweet', this.originalTweetId);
     }
 });

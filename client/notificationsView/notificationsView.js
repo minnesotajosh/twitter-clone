@@ -1,7 +1,7 @@
 Template.notificationsView.onCreated( () => {
-    Template.instance().subscribe( 'notifications' );  
-    Template.instance().subscribe( 'tweets' );  
-    Template.instance().subscribe( 'users' );  
+    Template.instance().subscribe( 'notifications' );
+    Template.instance().subscribe( 'tweets' );
+    Template.instance().subscribe( 'users' );
 
     Template.notificationsView.markAsRead = setTimeout(function() {Meteor.call('notifications.markAsRead')}, 3000);
   });
@@ -15,6 +15,7 @@ Template.notificationsView.helpers({
         switch (this.type) {
             case 'like': return Template.notificationLike;
             case 'follow': return Template.notificationFollow;
+            case 'retweet': return Template.notificationRetweet;
             default: return '';
         }
     },
@@ -34,15 +35,32 @@ Template.notificationLike.helpers({
         let user = tweet && Meteor.users.findOne(tweet.createdBy);
         return tweet && user && user.username;
     },
-    likedBy: function() {
-        let user = Meteor.users.findOne(this.sentBy);        
+    sentBy: function() {
+        let user = Meteor.users.findOne(this.sentBy);
+        return user && user.username;
+    }
+});
+
+Template.notificationRetweet.helpers({
+    tweetSummary: function() {
+        //console.log(this);
+        let tweet = Tweets.findOne(this.content);
+        return tweet && tweet.tweetData;
+    },
+    authorUsername: function() {
+        let tweet = Tweets.findOne(this.content);
+        let user = tweet && Meteor.users.findOne(tweet.createdBy);
+        return tweet && user && user.username;
+    },
+    sentBy: function() {
+        let user = Meteor.users.findOne(this.sentBy);
         return user && user.username;
     }
 });
 
 Template.notificationFollow.helpers({
     followedBy: function() {
-        let user = Meteor.users.findOne(this.sentBy);        
+        let user = Meteor.users.findOne(this.sentBy);
         return user && user.username;
     }
 });

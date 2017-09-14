@@ -1,8 +1,9 @@
 <template name="createTweetContainer">
         <div class="create-tweet-container">
-            <form action="">
+            <form class="tweet-form" action="">
                 <div class="tweet-box" data="tweet-box" contenteditable="true"></div>
-                <button class="pull-right" type="submit">tweet</button>
+                <button class="tweet-submit" type="submit">tweet</button>
+                <span class="character-count {{characterLimitStatus}}">{{characterLimit}}</span>
             </form>
-        </div>    
+        </div>
 </template>

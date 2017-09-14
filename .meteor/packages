@@ -26,3 +26,4 @@ djedi:sanitize-html
 aldeed:collection2-core@2.0.0
 aldeed:simple-schema
 aldeed:collection2
+session

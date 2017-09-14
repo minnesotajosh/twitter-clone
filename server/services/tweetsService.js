@@ -6,8 +6,7 @@ Meteor.methods({
     tweet.createdBy = Meteor.userId();
     tweet.createdOn = new Date();
     if (!isRetweet) {
-      tweet.tweetData = sanitizeHtml(tweet.tweetData);
-
+      tweet.tweetData = sanitizeHtml(tweet.tweetData, { allowedTags: ['a'] });
       let findTags = tweet.tweetData.split(' ');
       for (let word of findTags) {
         if (word.slice(0, 1) === '#') {
@@ -25,8 +24,6 @@ Meteor.methods({
       tweet.tweetData = tweet.tweetData.replace(/@([a-zA-Z0-9]+)/g, '<a href="/users/$1">@$1</a>');
 
     }
-    console.log(tweet);
-
 
     /*
         * Check if currentUser is inserting tweets to their own account

@@ -1,5 +1,5 @@
 Meteor.methods({
-    followUser: function(userId) {
+    'users.followUser': function(userId) {
 
         let followingList = Meteor.user().profile.following;
         followingList.push(userId);
@@ -17,7 +17,7 @@ Meteor.methods({
 
         Meteor.call('notifications.followedUser', userId);
     },
-    unfollowUser: function(userId) {
+    'users.unfollowUser': function(userId) {
         let followingList = Meteor.user().profile.following;
         Meteor.users.update(
             { _id: Meteor.userId() },
@@ -27,6 +27,21 @@ Meteor.methods({
         Meteor.users.update(
             { _id: userId },
             { $set: { 'profile.followedBy': _.reject(followedByList, function(user) { return user === Meteor.userId() })}}
+        );
+    },
+    'users.updateUser': function(userProfile) {
+
+        let originalProfile = Meteor.user().profile;
+
+        for (var property in userProfile) {
+            if (userProfile.hasOwnProperty(property)) {
+                originalProfile[property] = userProfile[property];
+            }
+        }
+
+        Meteor.users.update(
+            { _id: Meteor.userId() },
+            { $set: { 'profile': originalProfile }}
         );
     }
 

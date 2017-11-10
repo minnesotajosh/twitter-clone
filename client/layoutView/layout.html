@@ -15,18 +15,18 @@
                     </form>
                 </li>
                 {{#if currentUser}}
-                <li><a href="#">Profile</a></li>
+                <li><a href="/users/{{username}}">Profile</a></li>
                 <li><a href="#">Tweet</a></li>
                 {{/if}}
                 {{> loginButtons}}
             </ul>
         </div>
     </div>
-    
+
     <div class="layout-container container">
         {{> yield}}
     </div>
-       
+
 </template>
 
 <template name="newNotifications">

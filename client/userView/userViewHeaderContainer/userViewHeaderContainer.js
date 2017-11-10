@@ -1,5 +1,5 @@
 Template.userViewHeaderContainer.onCreated( () => {
-    Template.instance().subscribe( 'users' );  
+    Template.instance().subscribe( 'users' );
   });
 
 Template.userViewHeaderContainer.helpers({
@@ -14,25 +14,23 @@ Template.userViewHeaderContainer.helpers({
     },
     followedByCount: function() {
         let foundUser = Meteor.users.findOne(this._id);
-        console.log(this);
         return foundUser && foundUser.profile.followedBy.length || 0;
     },
     followingCount: function() {
         let foundUser = Meteor.users.findOne(this._id);
-        console.log(this);
         return foundUser && foundUser.profile.following.length || 0;
     },
     likesCount: function() {
         let foundUser = Meteor.users.findOne(this._id);
-        return foundUser && foundUser.profile.likes.length || 0;        
+        return foundUser && foundUser.profile.likes.length || 0;
     }
 });
 
 Template.userViewHeaderContainer.events({
     'click button[data="follow-user"]': function(event) {
-        Meteor.call('followUser', this._id);
-    },    
+        Meteor.call('users.followUser', this._id);
+    },
     'click button[data="unfollow-user"]': function(event) {
-        Meteor.call('unfollowUser', this._id);
-    }    
+        Meteor.call('users.unfollowUser', this._id);
+    }
 });

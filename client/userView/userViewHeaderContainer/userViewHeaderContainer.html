@@ -41,7 +41,7 @@
             <div class="col-md-3">
                 <div class="user-edit-button pull-right">
                     {{#if ownsProfile}}
-                        <button class="btn" data-edit-profile>Edit Profile</button>
+                        <a href="/users/{{username}}/edit" class="btn btn-default">Edit Profile</a>
                     {{else}}
                         {{#if followingUser}}
                             <button class="btn" data="unfollow-user">Unfollow</button>
@@ -49,7 +49,7 @@
                             <button class="btn" data="follow-user">Follow</button>
                         {{/if}}
                     {{/if}}
-                </div>                    
+                </div>
             </div>
         </div>
     </div>

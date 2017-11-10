@@ -1,7 +1,8 @@
 let userProfileSchema = new SimpleSchema({
     name: {
         type: String,
-        optional: true
+        optional: true,
+        max: 254
     },
     birthday: {
         type: Date,
@@ -10,11 +11,18 @@ let userProfileSchema = new SimpleSchema({
     website: {
         type: String,
         regEx: SimpleSchema.RegEx.Url,
-        optional: true
+        optional: true,
+        max: 2000
     },
     bio: {
         type: String,
-        optional: true
+        optional: true,
+        max: 254
+    },
+    location: {
+        type: String,
+        optional: true,
+        max: 254
     },
     following: {
         type: [String],
@@ -36,7 +44,7 @@ let userProfileSchema = new SimpleSchema({
 });
 
 userSchema = new SimpleSchema({
-    username: {
+    username: { //twitter handle
         type: String
     },
     emails: {
@@ -52,7 +60,7 @@ userSchema = new SimpleSchema({
     },
     "emails.$.verified": {
         type: Boolean
-    },    
+    },
     createdAt: {
         type: Date
     },
@@ -81,7 +89,7 @@ Meteor.users.allow({
     update() { return false; },
     remove() { return false; }
   });
-  
+
 Meteor.users.deny({
     insert() { return true; },
     update() { return true; },

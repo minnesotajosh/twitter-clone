@@ -1,5 +1,5 @@
 Template.newNotifications.onCreated( () => {
-    Template.instance().subscribe( 'notifications' );  
+    Template.instance().subscribe( 'notifications' );
 });
 
 Template.newNotifications.helpers({
@@ -7,4 +7,10 @@ Template.newNotifications.helpers({
         let notifications = Notifications.find({sentTo: Meteor.userId(), hasBeenRead: false}).fetch();
         return notifications && notifications.length;
     }
-})
+});
+
+Template.layout.helpers({
+    username: function() {
+        return Meteor.user() && Meteor.user().username;
+    }
+});

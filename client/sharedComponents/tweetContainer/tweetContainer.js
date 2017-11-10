@@ -11,6 +11,10 @@ Template.tweetContainer.helpers({
         let foundUser = Meteor.users.findOne(this.createdBy);
         return foundUser && foundUser.username;
     },
+    name: function() {
+        let foundUser = Meteor.users.findOne(this.createdBy);
+        return foundUser && foundUser.profile.name;
+    },
     originalAuthor: function() {
         let originalAuthor = '';
         if (this.originalTweetId) {

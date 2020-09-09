@@ -1,0 +1,34 @@
+.create-tweet-container {
+    background: #e0e0e0;
+    padding: 15px;
+    margin-bottom: 15px;
+    form {
+        background: #fff;
+        border: 1px solid #dfdfdf;
+        position: relative;
+        .tweet-box {
+            padding: 15px 75px 15px 15px;
+            height: 75px;
+        }
+        .tweet-submit {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+        .character-count {
+            position: absolute;
+            bottom: 5px;
+            right: 15px;
+            color: #ccc;
+        }
+        .warning {
+            color: #8a6d3b;
+            font-weight: bold;
+        }
+        .error {
+            color: #a94442;
+            font-weight: bold;
+        }
+
+    }
+}

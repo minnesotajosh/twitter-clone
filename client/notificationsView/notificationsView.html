@@ -1,0 +1,104 @@
+<template name="notificationsView">
+    <div class="row">
+    <div class="col-sm-3">
+        {{> currentlyTrendingContainer}}
+    </div>
+    <div class="col-sm-6">
+        <div class="notifications-container card">
+            <h4>Notifications</h4>
+            <ul class="list-unstyled">
+            {{#each notifications}}
+            <li class="notification-container {{unread}}">
+                <div class="">
+                {{> notificationType}}
+                </div>
+            </li>
+            {{else}}
+            <li>
+                <p>No notifications</p>
+            </li>
+            {{/each}}
+        </ul>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        {{> suggestedFollowContainer}}
+        {{> adSpaceContainer}}
+        {{> supportContainer}}
+    </div>
+</div>
+</template>
+
+<template name="notificationLike">
+    <div class="row">
+        <div class="col-xs-2">
+            <span class="glyphicon glyphicon-heart pull-right"></span>
+        </div>
+        <div class="col-xs-10">
+            <div class="profiles">
+                <ul class="list-inline">
+                    <li><a href="/users/{{sentBy}}"><img class="account-image" src="http://via.placeholder.com/60x60"></a></li>
+                </ul>
+            </div>
+            <div class="update">
+                <h5><a href="/users/{{sentBy}}">{{sentBy}}</a> liked your tweet</h5>
+            </div>
+            <div class="tweet-summary-container">
+                    <a href="#" class="summary-link">
+                <div class="tweet-summary">
+                    <div class="author-information">
+                        <a href="{{authorUsername}}">{{authorUsername}} @{{authorUsername}}</a>
+                    </div>
+                    {{{tweetSummary}}}
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="notificationRetweet">
+        <div class="row">
+            <div class="col-xs-2">
+                <span class="glyphicon glyphicon-retweet pull-right"></span>
+            </div>
+            <div class="col-xs-10">
+                <div class="profiles">
+                    <ul class="list-inline">
+                        <li><a href="/users/{{sentBy}}"><img class="account-image" src="http://via.placeholder.com/60x60"></a></li>
+                    </ul>
+                </div>
+                <div class="update">
+                    <h5><a href="/users/{{sentBy}}">{{sentBy}}</a> retweeted your tweet</h5>
+                </div>
+                <div class="tweet-summary-container">
+                        <a href="#" class="summary-link">
+                    <div class="tweet-summary">
+                        <div class="author-information">
+                            <a href="{{authorUsername}}">{{authorUsername}} @{{authorUsername}}</a>
+                        </div>
+                        {{{tweetSummary}}}
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+</template>
+
+<template name="notificationFollow">
+    <div class="row">
+        <div class="col-xs-2">
+            <span class="glyphicon glyphicon-user pull-right"></span>
+        </div>
+        <div class="col-xs-10">
+            <div class="profiles">
+                <ul class="list-inline">
+                    <li><a href="/users/{{followedBy}}"><img class="account-image" src="http://via.placeholder.com/60x60"></a></li>
+                </ul>
+            </div>
+            <div class="update">
+                <h5><a href="/users/{{followedBy}}">{{followedBy}}</a> is following you</h5>
+            </div>
+        </div>
+    </div>
+</template>

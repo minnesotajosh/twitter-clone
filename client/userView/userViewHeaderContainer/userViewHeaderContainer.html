@@ -1,0 +1,56 @@
+<template name="userViewHeaderContainer">
+    <div class="user-view-header card">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="profile-image-container">
+                        <a href="/users/{{username}}">
+                            <img src="http://via.placeholder.com/150x150" alt="">
+                        </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="user-profile-stats-container text-center">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">
+                            <div class="user-details-title">Tweets</div>
+                            <div class="user-details-count">2</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <div class="user-details-title">Followers</div>
+                            <div class="user-details-count">{{followedByCount}}</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <div class="user-details-title">Following</div>
+                            <div class="user-details-count">2</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <div class="user-details-title">Likes</div>
+                            <div class="user-details-count">{{likesCount}}</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="user-edit-button pull-right">
+                    {{#if ownsProfile}}
+                        <a href="/users/{{username}}/edit" class="btn btn-default">Edit Profile</a>
+                    {{else}}
+                        {{#if followingUser}}
+                            <button class="btn" data="unfollow-user">Unfollow</button>
+                            {{else}}
+                            <button class="btn" data="follow-user">Follow</button>
+                        {{/if}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

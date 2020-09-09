@@ -1,0 +1,41 @@
+    .tweet-container {
+        border-top: 1px solid #dfdfdf;
+        position: relative;
+        .tweet-menu {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+        .author-image-container {
+            float: left;
+            margin-right: 15px;
+            img {
+                width: 45px;
+                border-radius: 50%;
+            }
+        }
+
+        .tweet-creator-data-container {
+            margin-top: 10px;
+            & > div {
+                float: left;
+                margin-right: 15px;
+            }
+        }
+
+        .tweet-content {
+            clear: both;
+            margin: 15px 0 15px 60px;
+        }
+        .tweet-publish-data-container {
+            margin-left: 60px;
+            padding-bottom: 30px;
+            & > div {
+                float: left;
+                margin-right: 15px;
+            }
+        }
+    }
+    .clickable {
+        cursor: pointer;
+    }

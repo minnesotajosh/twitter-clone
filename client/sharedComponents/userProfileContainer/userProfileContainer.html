@@ -1,0 +1,31 @@
+<template name="userProfileContainer">
+<div class="user-profile-container">
+    <div class="user-image-container">
+        <a href="/users/{{user}}">
+            <img src="http://via.placeholder.com/100x100" alt="">
+        </a>
+    </div>
+    <div class="user-name-container">
+        <a href="/users/{{user}}">
+            <div class="user-name">{{username}}</div>
+            <div class="user-handle">@{{user}}</div>
+        </a>
+    </div>
+    <div class="user-details-container">
+        <div class="row text-center">
+            <div class="col-xs-4">
+                <div class="user-details-title">Tweets</div>
+                <div class="user-details-count">{{tweetCount}}</div>
+            </div>
+            <div class="col-xs-4">
+                <div class="user-details-title">Follows</div>
+                <div class="user-details-count">{{followingCount}}</div>
+            </div>
+            <div class="col-xs-4">
+                <div class="user-details-title">Followers</div>
+                <div class="user-details-count">{{followedByCount}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+</template>

@@ -1,0 +1,60 @@
+<template name="tweetContainer">
+        <div data="{{linkToTweet}}" class="tweet-container card {{clickable}}">
+        {{#if retweetedBy}}
+            <div class="retweet-author">
+                <span class="glyphicon glyphicon-retweet" title="retweet"></span> by {{retweetedBy}}
+            </div>
+        {{/if}}
+        <div class="tweet-menu">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    {{#if canDelete}}
+                        <li><button class="btn btn-link" data="delete-tweet">Remove Tweet</button></li>
+                    {{/if}}
+                </ul>
+              </div>
+    <div class="author-image-container">
+        <a href="/users/{{username}}">
+            <img src="http://via.placeholder.com/60x60" alt="">
+        </a>
+    </div>
+    <div class="tweet-creator-data-container">
+        <div class="author-name">
+            <a href="/users/{{username}}">{{name}}</a>
+        </div>
+        <div class="author-handle">
+                <a href="/users/{{username}}">@{{username}}</a>
+        </div>
+        <div class="tweet-timestamp">37m</div>
+    </div>
+    <div class="tweet-content">
+        <p>{{{tweetData}}}</p>
+
+    </div>
+    {{#if retweetedBy}}
+    <div class="tweet-publish-data-container">
+        <!-- <div class="replies-container">1</div> -->
+        <div class="retweets-container">
+            <button class="btn" data="retweet-retweet"><span class="glyphicon glyphicon-retweet" title="retweet"></span>{{originalRetweetsCount}}</button>
+        </div>
+        <div class="favorited-container">
+            <button class="btn" data="like-retweet"><span class="glyphicon glyphicon-heart {{isLiked}}" title="likes"></span>{{originalLikesCount}}</button>
+        </div>
+        <div class="message-author-container"></div>
+    </div>
+    {{else}}
+    <div class="tweet-publish-data-container">
+            <!-- <div class="replies-container">1</div> -->
+            <div class="retweets-container">
+                <button class="btn" data="retweet-tweet"><span class="glyphicon glyphicon-retweet" title="retweet"></span>{{retweetsCount}}</button>
+            </div>
+            <div class="favorited-container">
+                <button class="btn" data="like-tweet"><span class="glyphicon glyphicon-heart {{isLiked}}" title="likes"></span>{{likesCount}}</button>
+            </div>
+            <div class="message-author-container"></div>
+        </div>
+    {{/if}}
+</div>
+
+</template>

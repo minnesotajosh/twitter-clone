@@ -1,0 +1,33 @@
+.account-image {
+    border-radius: 50%;
+    width: 30px;
+}
+
+.summary-link > .tweet-summary {
+    color: #333;
+    text-decoration: none;
+
+    
+}
+
+.summary-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.notification-container {
+    padding: 15px;
+    margin: 0 -15px;
+    border-top: 1px solid #ccc;
+    transition: background .5s ease;
+
+    .tweet-summary {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+    }
+}
+
+.unread {
+    background: #f5f8fd;
+}

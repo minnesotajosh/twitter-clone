@@ -1,0 +1,32 @@
+body {
+    background: #f0f0f0;
+}
+.nav {
+    form {
+        padding: 10px 0 0;
+        button {
+            margin: 0 0 0 15px;
+            border-radius: 5px;
+            border: none;
+        }
+    }
+}
+
+.layout-container {
+    padding-top: 60px;
+}
+
+.card {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.link-unstyled {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover, &:active, &:focus {
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,30 @@
+<template name="userView">
+        <div class="row">
+            <div class="col-xs-12">
+                {{> userViewHeaderContainer}}
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-3">
+                {{> userInformationContainer}}                
+            </div>
+
+            <div class="col-md-6">
+                <div class="user-feed-filters-container">
+                    <ul class="list-inline">
+                        <li><a href="#">Tweets</a></li>
+                        <li><a href="#">Tweets &amp; Replies</a></li>
+                        <li><a href="#">Media</a></li>
+                    </ul>
+                </div>                
+                {{> userFeedContainer}}
+            </div>
+
+            <div class="col-md-3">
+                {{> suggestedFollowContainer}}
+                {{> currentlyTrendingContainer}}
+                {{> supportContainer}}
+            </div>
+        </div>
+</template>

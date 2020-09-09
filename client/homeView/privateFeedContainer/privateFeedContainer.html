@@ -1,0 +1,22 @@
+<template name="privateFeedContainer">
+    <ul class="feed list-unstyled">
+        {{#each tweets}}
+        <li>
+                <a class="link-unstyled" href="/users/{{../username}}/status/{{_id}}">
+                    {{> tweetContainer}}
+                    </a>
+                        </li>
+        {{else}}
+        <li>
+                <div class="tweet-container card">
+
+                    <div class="tweet-content">
+                        <p>Y'all need some friends.</p>
+
+                    </div>
+
+                </div>
+            </li>
+        {{/each}}
+    </ul>
+</template>

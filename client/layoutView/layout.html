@@ -1,0 +1,36 @@
+<template name="layout">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            {{#if currentUser}}
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/notifications">Notifications{{> newNotifications}}</a></li>
+                <li><a href="#">Messages</a></li>
+            </ul>
+            {{/if}}
+            <ul class="nav navbar-nav navbar-right pull-right">
+                <li>
+                    <form action="">
+                        <input type="text"><button type="submit">Search</button>
+                    </form>
+                </li>
+                {{#if currentUser}}
+                <li><a href="/users/{{username}}">Profile</a></li>
+                <li><a href="#">Tweet</a></li>
+                {{/if}}
+                {{> loginButtons}}
+            </ul>
+        </div>
+    </div>
+
+    <div class="layout-container container">
+        {{> yield}}
+    </div>
+
+</template>
+
+<template name="newNotifications">
+    {{#if newNotifications}}
+        <span class="badge">{{newNotifications}}</span>
+    {{/if}}
+</template>
